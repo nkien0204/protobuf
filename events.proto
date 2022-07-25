@@ -1,0 +1,25 @@
+syntax = "proto3";
+package events;
+option go_package = "./";
+
+enum EventType {
+    HEART_BEAT = 0;
+    LOST_CONNECTION = 1;
+}
+
+message InternalMessageEvent {
+  EventType event_type = 1;
+  oneof msg_one_of {
+      HeartBeatEvent heart_beat_event = 2;
+      LostConnection lost_connection = 3;
+  }
+}
+
+message HeartBeatEvent {
+
+}
+
+message LostConnection {
+  string client_name = 1;
+  string client_uuid = 2;
+}
