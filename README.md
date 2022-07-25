@@ -1,2 +1,2 @@
-# self-protobuf
+# protobuf
 Self defined protocol buffer
