@@ -9,9 +9,10 @@ enum EventType {
 
 message InternalMessageEvent {
   EventType event_type = 1;
+  string token = 2;
   oneof msg_one_of {
-      HeartBeatEvent heart_beat_event = 2;
-      LostConnection lost_connection = 3;
+      HeartBeatEvent heart_beat_event = 3;
+      LostConnection lost_connection = 4;
   }
 }
 
