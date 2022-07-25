@@ -12,7 +12,7 @@ message InternalMessageEvent {
   string token = 2;
   oneof msg_one_of {
       HeartBeatEvent heart_beat_event = 3;
-      LostConnection lost_connection = 4;
+      LostConnectionEvent lost_connection_event = 4;
   }
 }
 
@@ -20,7 +20,7 @@ message HeartBeatEvent {
 
 }
 
-message LostConnection {
+message LostConnectionEvent {
   string client_name = 1;
   string client_uuid = 2;
 }
