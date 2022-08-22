@@ -1,1 +1,1 @@
-protoc --go_out=./build/ events.proto
+protoc --go_out=./build/ --go-grpc_out=./build/ events.proto
