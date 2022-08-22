@@ -19,6 +19,7 @@ message InternalMessageEvent {
     oneof msg_one_of {
         HeartBeatEvent heart_beat_event = 3;
         LostConnectionEvent lost_connection_event = 4;
+        RpcHeartBeatEvent rpc_heart_beat_event = 5;
     }
 }
 
