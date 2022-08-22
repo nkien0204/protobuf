@@ -2,18 +2,24 @@ syntax = "proto3";
 package events;
 option go_package = "./";
 
+service RouteGuide {
+    // Bidirectional streaming RPC
+    rpc PingPong(stream RpcHeartBeatEvent) returns (stream RpcHeartBeatEvent) {}
+}
+
 enum EventType {
     HEART_BEAT = 0;
     LOST_CONNECTION = 1;
+    RPC_HEART_BEAT = 2;
 }
 
 message InternalMessageEvent {
-  EventType event_type = 1;
-  string token = 2;
-  oneof msg_one_of {
-      HeartBeatEvent heart_beat_event = 3;
-      LostConnectionEvent lost_connection_event = 4;
-  }
+    EventType event_type = 1;
+    string token = 2;
+    oneof msg_one_of {
+        HeartBeatEvent heart_beat_event = 3;
+        LostConnectionEvent lost_connection_event = 4;
+    }
 }
 
 message HeartBeatEvent {
@@ -21,6 +27,10 @@ message HeartBeatEvent {
 }
 
 message LostConnectionEvent {
-  string client_name = 1;
-  string client_uuid = 2;
+    string client_name = 1;
+    string client_uuid = 2;
+}
+
+message RpcHeartBeatEvent {
+    int64 timestamp = 1;
 }
